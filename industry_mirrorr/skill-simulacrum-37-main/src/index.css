@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 94%;
+
+    --card: 222 47% 9%;
+    --card-foreground: 210 40% 94%;
+
+    --popover: 222 47% 9%;
+    --popover-foreground: 210 40% 94%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 6%;
+
+    --secondary: 222 47% 14%;
+    --secondary-foreground: 210 40% 90%;
+
+    --muted: 222 30% 16%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 172 66% 50%;
+    --accent-foreground: 222 47% 6%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 222 47% 6%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 222 47% 6%;
+
+    --border: 222 30% 18%;
+    --input: 222 30% 14%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem;
+
+    --terminal-bg: 222 47% 5%;
+    --terminal-text: 142 71% 60%;
+    --terminal-border: 142 40% 20%;
+
+    --email-bg: 222 47% 8%;
+    --email-border: 222 30% 22%;
+
+    --glow-primary: 0 0 30px hsl(217 91% 60% / 0.15);
+    --glow-accent: 0 0 30px hsl(172 66% 50% / 0.1);
+
+    --sidebar-background: 222 47% 6%;
+    --sidebar-foreground: 210 40% 94%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 222 47% 6%;
+    --sidebar-accent: 222 47% 14%;
+    --sidebar-accent-foreground: 210 40% 94%;
+    --sidebar-border: 222 30% 18%;
+    --sidebar-ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-card border border-border rounded-xl;
+    box-shadow: var(--glow-primary);
+    backdrop-filter: blur(12px);
+  }
+
+  .terminal-box {
+    background: hsl(var(--terminal-bg));
+    border: 1px solid hsl(var(--terminal-border));
+    @apply rounded-lg font-mono text-sm;
+  }
+
+  .email-box {
+    background: hsl(var(--email-bg));
+    border: 1px solid hsl(var(--email-border));
+    @apply rounded-lg;
+  }
+
+  .score-circle {
+    background: conic-gradient(
+      hsl(var(--primary)) calc(var(--score) * 1%),
+      hsl(var(--muted)) 0%
+    );
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin 3s linear infinite;
+  }
+
+  .animate-typing {
+    animation: typing 1.5s steps(30) infinite;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px hsl(217 91% 60% / 0.2); }
+  50% { box-shadow: 0 0 40px hsl(217 91% 60% / 0.4); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes typing {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
+}
